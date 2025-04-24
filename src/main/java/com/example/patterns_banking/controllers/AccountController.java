@@ -3,6 +3,8 @@ package com.example.patterns_banking.controllers;
 import com.example.patterns_banking.dtos.AccountDTO;
 import com.example.patterns_banking.models.Account;
 import com.example.patterns_banking.services.AccountService;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,5 +24,10 @@ public class AccountController {
   @GetMapping("/{accountId}/deposit")
   public Account deposit(@PathVariable Long accountId, @RequestParam Double amount) {
     return accountService.deposit(accountId, amount);
+  }
+
+  @GetMapping
+  public List<Account> listAccounts() {
+      return accountService.listAccounts();
   }
 }
